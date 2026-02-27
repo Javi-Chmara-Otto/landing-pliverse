@@ -44,10 +44,10 @@
 
     /* HERO */
     .hero {
-      min-height: 100vh;
+      min-height: 120vh;
       display: grid; grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 120px 48px 80px;
+      padding: 120px 120px 80px;
       gap: 40px;
       position: relative;
     }
@@ -57,7 +57,7 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,53,.1); border: 1px solid rgba(255,107,53,.25); color: var(--accent); padding: 6px 16px; border-radius: 50px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 28px; }
     .hero-badge::before { content:'●'; font-size:7px; animation: pulse 2s infinite; }
-    h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2.6rem,5vw,4.2rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 24px; }
+    h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(4rem,5vw,4.2rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 24px; }
     h1 em { font-style: normal; color: var(--accent); }
     .underline-teal { position: relative; display: inline-block; }
     .underline-teal::after { content:''; position: absolute; bottom:2px; left:0; right:0; height:4px; background: var(--accent2); border-radius:2px; opacity:.65; }
