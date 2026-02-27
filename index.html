@@ -1,588 +1,604 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PliVerse — Juguetes 3D que despiertan la imaginación</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PliVerse | Juguetes Flexibles Impresos en 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --cream: #FDF8F2;
-      --ink: #1A1412;
-      --coral: #FF5733;
-      --lime: #BFFF00;
-      --sky: #4ECDC4;
-      --soft: #F5EFE6;
-      --muted: #8A7F78;
-      --r: 16px;
-      --r-lg: 24px;
-      --max: 1100px;
+      --bg: #0a0a0f;
+      --surface: #13131c;
+      --surface2: #1c1c2e;
+      --accent: #ff6b35;
+      --accent2: #00e5c4;
+      --accent3: #f7c948;
+      --text: #f0f0f8;
+      --muted: #7a7a9d;
+      --border: rgba(255,255,255,0.07);
+      --radius: 20px;
     }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
-
-    /* INNER WRAPPER */
-    .inner { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,248,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,20,18,0.06); }
-    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.5rem; color: var(--ink); letter-spacing: -0.03em; }
-    .nav-logo span { color: var(--coral); }
-    .nav-links { display: flex; gap: 0.75rem; }
-    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--ink); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 999px; transition: background 0.2s; }
-    .nav-links a:hover { background: var(--soft); }
-    .nav-cta { background: var(--ink) !important; color: var(--cream) !important; font-weight: 600 !important; }
-    .nav-cta:hover { background: var(--coral) !important; }
-
-    /* BUTTONS */
-    .btn-primary { background: var(--coral); color: #fff; border: none; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 999px; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(255,87,51,0.35); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,87,51,0.5); }
-    .btn-secondary { background: transparent; color: var(--ink); border: 2px solid var(--ink); font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 999px; text-decoration: none; display: inline-block; transition: background 0.2s, color 0.2s; }
-    .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo span { color: var(--accent); }
+    .logo-dot { width: 8px; height: 8px; background: var(--accent2); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent); color: #fff; padding: 10px 24px; border-radius: 50px; font-weight: 600; font-size: .9rem; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,53,.4); }
 
     /* HERO */
-    .hero { min-height: 100vh; padding: 6rem 1.5rem 3rem; position: relative; overflow: hidden; display: flex; align-items: center; }
-    .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; pointer-events: none; }
-    .hero-blob-1 { width: 500px; height: 500px; background: var(--coral); top: -100px; right: -150px; animation: float 8s ease-in-out infinite; }
-    .hero-blob-2 { width: 300px; height: 300px; background: var(--sky); bottom: 0; left: -80px; animation: float 10s ease-in-out infinite reverse; }
-    .hero-blob-3 { width: 200px; height: 200px; background: var(--lime); top: 40%; right: 10%; animation: float 7s ease-in-out infinite 2s; }
-    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
+      gap: 60px;
+      position: relative;
+    }
+    .hero-glow-left { position: absolute; top: 0; left: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,107,53,.1) 0%, transparent 65%); pointer-events: none; z-index: 0; }
+    .hero-glow-right { position: absolute; top: 100px; right: -100px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,229,196,.07) 0%, transparent 65%); pointer-events: none; z-index: 0; }
+    .hero-content { position: relative; z-index: 1; animation: fadeUp .9s ease both; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,53,.1); border: 1px solid rgba(255,107,53,.25); color: var(--accent); padding: 6px 16px; border-radius: 50px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 28px; }
+    .hero-badge::before { content:'●'; font-size:7px; animation: pulse 2s infinite; }
+    h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2.6rem,5vw,4.2rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 24px; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .underline-teal { position: relative; display: inline-block; }
+    .underline-teal::after { content:''; position: absolute; bottom:2px; left:0; right:0; height:4px; background: var(--accent2); border-radius:2px; opacity:.65; }
+    .hero-desc { font-size: 1.1rem; color: var(--muted); line-height: 1.75; max-width: 460px; margin-bottom: 40px; }
+    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: .95rem; transition: transform .2s, box-shadow .2s; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(255,107,53,.45); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 500; font-size: .9rem; padding: 14px 0; transition: color .2s; }
+    .btn-secondary:hover { color: var(--accent2); }
+    .hero-stats { display: flex; gap: 40px; margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--border); }
+    .stat-num { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.9rem; }
+    .stat-label { font-size: .78rem; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: .06em; }
 
-    .hero-grid { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-text { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; animation: fadeUp 0.8s ease both; }
+    /* HERO VISUAL */
+    .hero-visual { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; animation: fadeUp .9s ease .2s both; }
+    .dino-stage { position: relative; width: 420px; height: 440px; display: flex; align-items: center; justify-content: center; }
+    .dino-halo { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-58%); width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(255,107,53,.2) 0%, rgba(255,107,53,.06) 50%, transparent 70%); animation: haloPulse 4s ease-in-out infinite; }
+    @keyframes haloPulse { 0%,100%{transform:translate(-50%,-58%) scale(1);opacity:.8} 50%{transform:translate(-50%,-58%) scale(1.12);opacity:1} }
+    .dino-svg { width: 400px; height: 400px; overflow: visible; animation: dinoFloat 4.5s ease-in-out infinite; filter: drop-shadow(0 20px 50px rgba(200,70,0,.5)); }
+    @keyframes dinoFloat { 0%,100%{transform:translateY(0) rotate(-.8deg)} 45%{transform:translateY(-18px) rotate(1.2deg)} 75%{transform:translateY(-9px) rotate(0)} }
+    .dino-ground { animation: groundPulse 4.5s ease-in-out infinite; transform-origin: center; }
+    @keyframes groundPulse { 0%,100%{opacity:.7;transform:scaleX(1)} 45%{opacity:.25;transform:scaleX(.6)} }
+    .floating-pill { position: absolute; background: var(--surface2); border: 1px solid var(--border); border-radius: 50px; padding: 9px 16px; font-size: .8rem; font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.35); white-space: nowrap; z-index: 2; }
+    .pill1 { top: 30px; right: 0; animation: floatPill 5s ease-in-out infinite; }
+    .pill2 { bottom: 70px; left: -10px; animation: floatPill 6s ease-in-out infinite reverse; }
+    .pill3 { top: 140px; left: -20px; animation: floatPill 7s ease-in-out infinite 1s; }
+    @keyframes floatPill { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .pill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--lime); color: var(--ink); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 999px; width: fit-content; }
-    .hero-badge::before { content: '✦'; font-size: 0.7rem; }
-
-    h1 { font-family: 'Fraunces', serif; font-size: clamp(4rem, 10vw, 6.5rem); font-weight: 900; line-height: 1.0; letter-spacing: -0.04em; }
-    h1 em { font-style: italic; color: var(--coral); }
-    .hero-sub { font-size: 1rem; line-height: 1.65; color: #5A4F4A; max-width: 440px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
-    .hero-visual { animation: fadeUp 0.8s ease 0.2s both; }
-    .hero-toy-card { background: white; border-radius: 28px; padding: 2rem; box-shadow: 0 20px 60px rgba(26,20,18,0.12); display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; }
-    .toy-emoji-big { font-size: 7rem; line-height: 1; animation: wiggle 3s ease-in-out infinite; }
-    @keyframes wiggle { 0%,100% { transform: rotate(-5deg) scale(1); } 25% { transform: rotate(5deg) scale(1.05); } 75% { transform: rotate(-3deg) scale(0.98); } }
-    .toy-caption { font-size: 0.8rem; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-    .toy-name { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; text-align: center; }
-    .floating-tag { position: absolute; background: var(--lime); color: var(--ink); font-size: 0.72rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,0.1); animation: bobY 4s ease-in-out infinite; }
-    .floating-tag-1 { top: 10px; right: -10px; }
-    .floating-tag-2 { bottom: 30px; left: -10px; background: var(--sky); animation-delay: 1.5s; }
-    @keyframes bobY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    /* TRUST BAR */
+    .trust-bar { padding: 28px 48px; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: .88rem; }
+    .trust-icon { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,107,53,.1); border: 1px solid rgba(255,107,53,.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .trust-item strong { display: block; color: var(--text); font-size: .92rem; margin-bottom: 1px; }
 
     /* SECTIONS */
-    section { padding: 4rem 0; }
-    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.75rem; }
-    h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.025em; }
-    h2 em { font-style: italic; color: var(--coral); }
-    p { line-height: 1.7; color: #5A4F4A; }
-
-    /* COLORED CARD SECTIONS */
-    .card-section { padding: 4rem 1.5rem; }
-    .card-section > .inner { padding: 0; }
-
-    /* PROBLEM */
-    .problem-wrap { background: var(--ink); color: var(--cream); border-radius: var(--r-lg); padding: 3rem 2rem; }
-    .problem-wrap .section-label { color: var(--lime); }
-    .problem-wrap h2 { color: var(--cream); }
-    .problem-wrap h2 em { color: var(--coral); }
-    .problem-wrap > p { color: rgba(253,248,242,0.75); margin-top: 1rem; }
-    .problem-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.75rem; }
-    .stat-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r); padding: 1.25rem; }
-    .stat-num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 900; color: var(--lime); line-height: 1; }
-    .stat-desc { font-size: 0.8rem; color: rgba(253,248,242,0.65); margin-top: 0.3rem; }
-
-    /* BENEFITS */
-    .benefits-section { background: var(--cream); }
-    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .benefit-card { background: white; border-radius: var(--r); padding: 1.5rem 1.25rem; box-shadow: 0 4px 20px rgba(26,20,18,0.06); transition: transform 0.25s, box-shadow 0.25s; }
-    .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,20,18,0.12); }
-    .benefit-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .benefit-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .benefit-desc { font-size: 0.82rem; line-height: 1.6; }
-    .benefit-card:nth-child(1) { border-top: 4px solid var(--coral); }
-    .benefit-card:nth-child(2) { border-top: 4px solid var(--sky); }
-    .benefit-card:nth-child(3) { border-top: 4px solid var(--lime); }
-    .benefit-card:nth-child(4) { border-top: 4px solid var(--coral); }
+    section { padding: 96px 48px; }
+    .section-label { font-size: .73rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.9rem,3.5vw,2.7rem); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 14px; }
+    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 500px; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; gap: 20px; flex-wrap: wrap; }
 
     /* PRODUCTS */
-    .products-section { background: var(--soft); }
-    .products-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
-    .product-card { background: white; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 6px 24px rgba(26,20,18,0.08); display: flex; flex-direction: column; transition: transform 0.25s; }
-    .product-card:hover { transform: translateY(-4px); }
-    .product-img { min-height: 220px; display: flex; align-items: center; justify-content: center; font-size: 6rem; position: relative; }
-    .product-img::after { content: 'NUEVO'; position: absolute; top: 12px; left: 12px; background: var(--coral); color: white; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border-radius: 999px; }
-    .product-card:nth-child(2) .product-img::after { background: var(--sky); content: 'POPULAR'; }
-    .product-card:nth-child(3) .product-img::after { background: #a855f7; content: 'LIMITADO'; }
-    .product-img-bg1 { background: linear-gradient(135deg, #fff0eb, #ffe0d4); }
-    .product-img-bg2 { background: linear-gradient(135deg, #e8fbfa, #c9f5f3); }
-    .product-img-bg3 { background: linear-gradient(135deg, #f3e8ff, #e8d5ff); }
-    .product-info { padding: 1.25rem; }
-    .product-name { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .product-desc { font-size: 0.82rem; margin-bottom: 0.75rem; }
-    .product-price { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 900; color: var(--coral); }
-    .product-actions { display: flex; gap: 0.6rem; margin-top: 1rem; }
-    .btn-cart { flex: 1; background: var(--ink); color: var(--cream); border: none; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600; padding: 0.75rem; border-radius: 999px; transition: background 0.2s; }
-    .btn-cart:hover { background: var(--coral); }
-    .btn-detail { background: var(--soft); color: var(--ink); border: none; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600; padding: 0.75rem 1rem; border-radius: 999px; transition: background 0.2s; }
-    .btn-detail:hover { background: #e8e0d6; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+    .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform .3s, box-shadow .3s, border-color .3s; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(0,0,0,.4); border-color: rgba(255,107,53,.3); }
+    .product-img { height: 220px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 5rem; position: relative; }
+    .product-img::after { content:''; position:absolute; bottom:0; left:0; right:0; height:60px; background: linear-gradient(to top, var(--surface), transparent); }
+    .product-body { padding: 20px 22px 24px; }
+    .product-tag { display: inline-block; background: rgba(0,229,196,.1); color: var(--accent2); border: 1px solid rgba(0,229,196,.2); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+    .product-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 16px; line-height: 1.3; }
+    .product-footer { display: flex; justify-content: space-between; align-items: center; }
+    .product-price { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--accent); }
+    .add-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; transition: transform .2s, box-shadow .2s; }
+    .add-btn:hover { transform: scale(1.12); box-shadow: 0 6px 20px rgba(255,107,53,.5); }
+    .product-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
+    .product-card.featured .product-img { height: 100%; min-height: 240px; }
 
-    /* PACKS */
-    .packs-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .pack-card { border-radius: var(--r-lg); padding: 1.75rem 1.5rem; position: relative; overflow: hidden; transition: transform 0.2s; }
-    .pack-card:hover { transform: scale(1.02); }
-    .pack-card-1 { background: linear-gradient(135deg, #FF5733, #ff8c6b); color: white; }
-    .pack-card-2 { background: linear-gradient(135deg, #4ECDC4, #26a69a); color: white; }
-    .pack-card-3 { background: linear-gradient(135deg, #1A1412, #3d2e2a); color: var(--cream); }
-    .pack-emoji { font-size: 3rem; margin-bottom: 0.75rem; }
-    .pack-name { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 900; margin-bottom: 0.4rem; }
-    .pack-desc { font-size: 0.85rem; opacity: 0.85; margin-bottom: 1rem; }
-    .pack-price { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.03em; }
-    .pack-card::before { content: ''; position: absolute; right: -30px; top: -30px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.1); }
-    .packs-cta { text-align: center; margin-top: 2rem; }
+    /* PACKS BANNER */
+    .packs-banner { margin: 0 48px; background: linear-gradient(135deg, #14142a 0%, #1a1a38 50%, #0f2040 100%); border-radius: 28px; border: 1px solid rgba(255,107,53,.2); padding: 64px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; position: relative; overflow: hidden; }
+    .packs-banner::before { content:''; position:absolute; top:-120px; right:-80px; width:400px; height:400px; background: radial-gradient(circle, rgba(247,201,72,.1), transparent 70%); pointer-events:none; }
+    .packs-banner::after { content:''; position:absolute; bottom:-80px; left:25%; width:300px; height:300px; background: radial-gradient(circle, rgba(255,107,53,.08), transparent 70%); pointer-events:none; }
+    .packs-badge { display:inline-flex; align-items:center; gap:6px; background: rgba(247,201,72,.12); color: var(--accent3); border: 1px solid rgba(247,201,72,.28); padding: 5px 14px; border-radius:50px; font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:18px; }
+    .packs-desc { color: rgba(240,240,248,.6); font-size: 1rem; line-height: 1.7; max-width: 480px; margin-bottom: 32px; }
+    .pack-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; position: relative; z-index: 1; }
+    .pack-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 16px; padding: 18px; text-align: center; font-size: 2.8rem; animation: floatPill 5s ease-in-out infinite; }
+    .pack-card:nth-child(2){animation-delay:.8s} .pack-card:nth-child(3){animation-delay:1.6s} .pack-card:nth-child(4){animation-delay:2.4s}
 
-    /* STORY */
-    .story-wrap { background: var(--ink); color: var(--cream); border-radius: var(--r-lg); padding: 3.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
-    .story-wrap::before { content: '✦ ✦ ✦'; position: absolute; font-size: 8rem; opacity: 0.04; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; letter-spacing: 2rem; }
-    .story-wrap .section-label { color: var(--lime); }
-    .story-wrap h2 { color: var(--cream); }
-    .story-wrap h2 em { color: var(--coral); }
-    .story-wrap > p { color: rgba(253,248,242,0.75); margin-top: 1rem; font-size: 1.05rem; max-width: 520px; margin-left: auto; margin-right: auto; }
-    .story-quote { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.4rem; color: var(--lime); margin-top: 2rem; line-height: 1.4; position: relative; }
+    /* STEPS */
+    .how-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 52px; }
+    .step { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px 26px; position: relative; transition: transform .25s; }
+    .step:hover { transform: translateY(-5px); }
+    .step:not(:last-child)::after { content:'→'; position:absolute; top:50%; right:-14px; transform:translateY(-50%); color:var(--muted); font-size:1.2rem; z-index:1; }
+    .step-num { font-family:'Nunito',sans-serif; font-weight:900; font-size:2.8rem; color:rgba(255,107,53,.18); margin-bottom:14px; line-height:1; }
+    .step-icon { font-size:1.9rem; margin-bottom:12px; }
+    .step-title { font-family:'Nunito',sans-serif; font-weight:800; font-size:1.05rem; margin-bottom:8px; }
+    .step-desc { color:var(--muted); font-size:.88rem; line-height:1.65; }
 
-    /* TRUST */
-    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .trust-item { background: white; border-radius: var(--r); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; box-shadow: 0 2px 12px rgba(26,20,18,0.06); }
-    .trust-icon { font-size: 1.6rem; }
-    .trust-label { font-weight: 700; font-size: 0.88rem; }
-    .trust-sub { font-size: 0.78rem; color: var(--muted); }
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: transform .25s; }
+    .review-card:hover { transform: translateY(-4px); }
+    .stars { color: var(--accent3); font-size:.95rem; letter-spacing:2px; margin-bottom:14px; }
+    .review-text { color: rgba(240,240,248,.75); line-height:1.7; font-size:.92rem; margin-bottom:20px; font-style:italic; }
+    .reviewer { display:flex; align-items:center; gap:12px; }
+    .reviewer-avatar { width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.88rem; color:#fff; flex-shrink:0; }
+    .reviewer-name { font-weight:700; font-size:.88rem; }
+    .reviewer-loc { color:var(--muted); font-size:.78rem; }
 
-    /* WHOLESALE */
-    .wholesale-wrap { background: linear-gradient(135deg, #1A1412 0%, #3d2e2a 100%); color: var(--cream); border-radius: var(--r-lg); padding: 3rem 2rem; position: relative; overflow: hidden; }
-    .wholesale-wrap::after { content: ''; position: absolute; right: -50px; bottom: -50px; width: 200px; height: 200px; border-radius: 50%; background: var(--coral); opacity: 0.15; }
-    .wholesale-wrap .section-label { color: var(--lime); }
-    .wholesale-wrap h2 { color: var(--cream); }
-    .wholesale-wrap > p { color: rgba(253,248,242,0.75); margin-top: 1rem; font-size: 0.95rem; }
-    .wholesale-features { list-style: none; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
-    .wholesale-features li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: rgba(253,248,242,0.9); }
-    .wholesale-features li::before { content: '✦'; color: var(--lime); font-size: 0.65rem; flex-shrink: 0; }
-    .btn-wholesale { background: var(--lime); color: var(--ink); border: none; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 700; padding: 0.9rem 2rem; border-radius: 999px; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; position: relative; z-index: 1; }
-    .btn-wholesale:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(191,255,0,0.3); }
-
-    /* TESTIMONIALS */
-    .testimonials-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .testi-card { background: white; border-radius: var(--r); padding: 1.5rem; box-shadow: 0 4px 20px rgba(26,20,18,0.06); }
-    .testi-stars { color: #F59E0B; font-size: 1rem; margin-bottom: 0.75rem; letter-spacing: 0.1em; }
-    .testi-text { font-size: 0.9rem; line-height: 1.65; font-style: italic; margin-bottom: 1rem; }
-    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
-    .testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-    .testi-name { font-weight: 700; font-size: 0.85rem; }
-    .testi-role { font-size: 0.75rem; color: var(--muted); }
-
-    /* FINAL CTA */
-    .final-cta-wrap { background: var(--coral); color: white; border-radius: var(--r-lg); padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
-    .final-cta-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(255,255,255,0.15), transparent); }
-    .final-cta-wrap .section-label { color: rgba(255,255,255,0.7); position: relative; }
-    .final-cta-wrap h2 { color: white; font-style: italic; position: relative; }
-    .final-cta-wrap > p { color: rgba(255,255,255,0.85); margin-top: 0.75rem; position: relative; }
-    .btn-final { background: white; color: var(--coral); font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; padding: 1rem 2.5rem; border-radius: 999px; text-decoration: none; display: inline-block; margin-top: 1.75rem; position: relative; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-    .btn-final:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    /* NEWSLETTER */
+    .newsletter-section { text-align:center; padding:80px 48px; background:var(--surface); border-top:1px solid var(--border); }
+    .newsletter-form { display:flex; gap:12px; max-width:440px; margin:32px auto 0; }
+    .newsletter-input { flex:1; background:var(--surface2); border:1px solid var(--border); border-radius:50px; padding:13px 22px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:.92rem; outline:none; transition:border-color .2s; }
+    .newsletter-input:focus { border-color:var(--accent); }
+    .newsletter-input::placeholder { color:var(--muted); }
+    .newsletter-btn { background:var(--accent); color:#fff; border:none; cursor:pointer; padding:13px 26px; border-radius:50px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.92rem; transition:transform .2s,box-shadow .2s; white-space:nowrap; }
+    .newsletter-btn:hover { transform:translateY(-2px); box-shadow:0 8px 26px rgba(255,107,53,.4); }
 
     /* FOOTER */
-    footer { background: var(--ink); color: rgba(253,248,242,0.75); padding: 3rem 0 2rem; }
-    .footer-logo { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 900; color: var(--cream); margin-bottom: 0.5rem; }
-    .footer-logo span { color: var(--coral); }
-    .footer-tagline { font-size: 0.85rem; margin-bottom: 2rem; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-    .footer-col-title { font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; }
-    .footer-col a, .footer-col p { display: block; font-size: 0.85rem; color: rgba(253,248,242,0.65); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--lime); }
-    .social-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
-    .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: background 0.2s; cursor: pointer; }
-    .social-btn:hover { background: var(--coral); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.75rem; }
-
-    /* DIVIDER */
-    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(26,20,18,0.1), transparent); }
+    footer { padding: 60px 48px 36px; border-top: 1px solid var(--border); }
+    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+    .footer-brand p { color:var(--muted); font-size:.88rem; line-height:1.7; max-width:290px; margin-top:14px; }
+    .footer-col h4 { font-family:'Nunito',sans-serif; font-weight:800; font-size:.85rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:16px; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:10px; }
+    .footer-col ul li a { color:var(--muted); text-decoration:none; font-size:.88rem; transition:color .2s; }
+    .footer-col ul li a:hover { color:var(--accent); }
+    .footer-contact { color:var(--muted); font-size:.88rem; line-height:2; }
+    .footer-contact a { color:var(--muted); text-decoration:none; }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:28px; border-top:1px solid var(--border); flex-wrap:wrap; gap:12px; }
+    .footer-bottom p { color:var(--muted); font-size:.82rem; }
+    .footer-links { display:flex; gap:22px; }
+    .footer-links a { color:var(--muted); font-size:.8rem; text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:var(--text); }
 
     /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* DESKTOP */
-    @media (min-width: 900px) {
-      .inner { padding: 0 2.5rem; }
-      .nav-inner { padding: 1rem 2.5rem; }
-
-      .hero { padding: 7rem 2.5rem 5rem; }
-      .hero-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem; padding: 0 1rem; }
-
-      section { padding: 5rem 0; }
-      .card-section { padding: 5rem 2.5rem; }
-
-      .benefits-grid { grid-template-columns: repeat(4, 1fr); }
-      .products-grid { flex-direction: row; }
-      .product-card { flex: 1; }
-      .packs-grid { flex-direction: row; }
-      .pack-card { flex: 1; }
-      .trust-grid { grid-template-columns: repeat(4, 1fr); }
-      .testimonials-grid { flex-direction: row; }
-      .testi-card { flex: 1; }
-      .footer-grid { grid-template-columns: repeat(4, 1fr); }
+    /* RESPONSIVE */
+    @media(max-width:1000px){
+      .hero { grid-template-columns:1fr; padding:110px 24px 60px; }
+      .hero-visual { display:none; }
+      .product-card.featured { grid-column:span 1; grid-template-columns:1fr; }
+      .product-card.featured .product-img { height:220px; }
+      .steps { grid-template-columns:1fr 1fr; }
+      .step:not(:last-child)::after { display:none; }
+      .reviews-grid { grid-template-columns:1fr; }
+      .footer-top { grid-template-columns:1fr 1fr; }
+      .packs-banner { margin:0 24px; padding:40px; grid-template-columns:1fr; }
+    }
+    @media(max-width:680px){
+      nav { padding:16px 20px; }
+      .nav-links, .nav-cta { display:none; }
+      section { padding:60px 20px; }
+      .trust-bar { padding:24px 20px; gap:24px; }
+      .footer-top { grid-template-columns:1fr; }
+      .steps { grid-template-columns:1fr; }
+      .newsletter-form { flex-direction:column; }
+      .hero-stats { gap:20px; flex-wrap:wrap; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-logo">Pli<span>Verse</span></div>
-      <div class="nav-links">
-        <a href="#productos">Tienda</a>
-        <a href="#mayoristas" class="nav-cta">Mayoristas</a>
-      </div>
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Pli<span>Verse</span> <span class="logo-dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#packs">Packs</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#productos" class="nav-cta">Ver tienda →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow-left"></div>
+  <div class="hero-glow-right"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">✦ Impresión 3D Argentina</div>
+    <h1>Juguetes que<br><em>cobran vida</em><br>en tus <span class="underline-teal">manos</span></h1>
+    <p class="hero-desc">Figuras articuladas y coleccionables impresas en 3D con PLA de alta calidad. Diseñadas para sorprender, para jugar, para regalar.</p>
+    <div class="hero-actions">
+      <a href="https://www.pliverse.com/productos/" class="btn-primary">
+        Explorar productos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.pliverse.com/product-category/packs-pliverse/" class="btn-secondary">🎁 Ver packs especiales</a>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-blob hero-blob-3"></div>
-    <div class="hero-grid">
-      <div class="hero-text">
-        <div class="hero-badge">Hecho en Argentina &#127462;&#127479;</div>
-        <h1>Juguetes 3D que despiertan la <em>imaginación</em></h1>
-        <p class="hero-sub">Diseños únicos, resistentes y seguros para que los chicos jueguen, exploren y se diviertan sin límites.</p>
-        <div class="hero-actions">
-          <a href="#productos" class="btn-primary">Ver colección →</a>
-          <a href="#packs" class="btn-secondary">Comprar ahora</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-toy-card">
-          <div class="floating-tag floating-tag-1">🧩 Articulado</div>
-          <div class="floating-tag floating-tag-2">✔ Seguro y flexible</div>
-          <div class="toy-emoji-big">🦕</div>
-          <div class="toy-caption">Juguete estrella</div>
-          <div class="toy-name">Dinosaurio Articulado 3D</div>
-        </div>
-      </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3D</div><div class="stat-label">Tecnología</div></div>
+      <div><div class="stat-num">PLA</div><div class="stat-label">Material premium</div></div>
+      <div><div class="stat-num">🚚</div><div class="stat-label">Todo el país</div></div>
     </div>
-  </section>
+  </div>
 
-  <div class="divider"></div>
+  <!-- 3D SVG DINO -->
+  <div class="hero-visual">
+    <div class="dino-stage">
+      <div class="dino-halo"></div>
+      <svg class="dino-svg" viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="gBody" cx="38%" cy="28%" r="70%">
+            <stop offset="0%" stop-color="#ffb870"/>
+            <stop offset="45%" stop-color="#ff7a20"/>
+            <stop offset="100%" stop-color="#c84000"/>
+          </radialGradient>
+          <radialGradient id="gBodyDark" cx="60%" cy="70%" r="60%">
+            <stop offset="0%" stop-color="#a83500"/>
+            <stop offset="100%" stop-color="#c84800"/>
+          </radialGradient>
+          <radialGradient id="gBelly" cx="40%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#ffe8cc"/>
+            <stop offset="60%" stop-color="#ffc896"/>
+            <stop offset="100%" stop-color="#e89060"/>
+          </radialGradient>
+          <radialGradient id="gHead" cx="32%" cy="25%" r="68%">
+            <stop offset="0%" stop-color="#ffcc88"/>
+            <stop offset="40%" stop-color="#ff8830"/>
+            <stop offset="100%" stop-color="#bf4000"/>
+          </radialGradient>
+          <radialGradient id="gSnout" cx="25%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#ff9944"/>
+            <stop offset="100%" stop-color="#d05000"/>
+          </radialGradient>
+          <radialGradient id="gEyeW" cx="30%" cy="28%" r="62%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#ddeeff"/>
+          </radialGradient>
+          <radialGradient id="gPupil" cx="35%" cy="32%" r="55%">
+            <stop offset="0%" stop-color="#2a2a50"/>
+            <stop offset="100%" stop-color="#080820"/>
+          </radialGradient>
+          <radialGradient id="gSpot" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#ffcc88"/>
+            <stop offset="100%" stop-color="#f09040"/>
+          </radialGradient>
+          <radialGradient id="gLeg" cx="30%" cy="25%" r="65%">
+            <stop offset="0%" stop-color="#ff9040"/>
+            <stop offset="100%" stop-color="#b83800"/>
+          </radialGradient>
+          <radialGradient id="gToe" cx="35%" cy="28%" r="60%">
+            <stop offset="0%" stop-color="#ffe8d0"/>
+            <stop offset="100%" stop-color="#f0b880"/>
+          </radialGradient>
+          <radialGradient id="gHL" cx="30%" cy="20%" r="55%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+          <filter id="fAO"><feGaussianBlur stdDeviation="3"/></filter>
+          <filter id="fDrop" x="-15%" y="-10%" width="135%" height="145%">
+            <feDropShadow dx="4" dy="10" stdDeviation="9" flood-color="#8b2200" flood-opacity="0.5"/>
+          </filter>
+        </defs>
 
-  <!-- PROBLEM -->
-  <section class="card-section">
-    <div class="inner">
-      <div class="problem-wrap reveal">
-        <div class="section-label">El problema</div>
-        <h2>Menos pantallas.<br>Más <em>imaginación.</em></h2>
-        <p>En un mundo lleno de dispositivos, los chicos necesitan volver a crear, explorar y usar sus manos. Los juguetes de PliVerse están diseñados para estimular la creatividad y la curiosidad de forma natural.</p>
-        <div class="problem-visual">
-          <div class="stat-card">
-            <div class="stat-num">7hs</div>
-            <div class="stat-desc">tiempo frente a pantallas por día en promedio</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">3x</div>
-            <div class="stat-desc">más creatividad con juego físico y manual</div>
-          </div>
-        </div>
-      </div>
+        <!-- Ground shadow -->
+        <ellipse class="dino-ground" cx="198" cy="362" rx="118" ry="12" fill="rgba(255,80,0,0.22)"/>
+
+        <g filter="url(#fDrop)">
+          <!-- TAIL -->
+          <ellipse cx="40" cy="224" rx="16" ry="11" fill="url(#gBodyDark)" transform="rotate(-35 40 224)"/>
+          <ellipse cx="40" cy="224" rx="9" ry="5.5" fill="url(#gBelly)" opacity=".55" transform="rotate(-35 40 224)"/>
+
+          <ellipse cx="75" cy="210" rx="23" ry="16" fill="url(#gBody)" transform="rotate(-22 75 210)"/>
+          <ellipse cx="75" cy="212" rx="14" ry="9" fill="url(#gBelly)" opacity=".65" transform="rotate(-22 75 212)"/>
+          <circle cx="68" cy="200" r="8" fill="url(#gSpot)" opacity=".75"/>
+          <circle cx="68" cy="200" r="4" fill="rgba(255,255,255,.2)"/>
+
+          <ellipse cx="114" cy="200" rx="29" ry="21" fill="url(#gBody)" transform="rotate(-12 114 200)"/>
+          <ellipse cx="114" cy="202" rx="18" ry="13" fill="url(#gBelly)" opacity=".65" transform="rotate(-12 114 202)"/>
+          <circle cx="106" cy="190" r="7" fill="url(#gSpot)" opacity=".6"/>
+
+          <!-- BACK LEG (behind) -->
+          <g opacity=".82">
+            <ellipse cx="128" cy="268" rx="16" ry="12" fill="url(#gLeg)" transform="rotate(20 128 268)"/>
+            <ellipse cx="118" cy="292" rx="13" ry="10" fill="url(#gLeg)" transform="rotate(10 118 292)"/>
+            <ellipse cx="112" cy="308" rx="16" ry="9" fill="url(#gLeg)" transform="rotate(-5 112 308)"/>
+            <ellipse cx="102" cy="316" rx="8" ry="5" fill="url(#gToe)" transform="rotate(-10 102 316)"/>
+            <ellipse cx="113" cy="319" rx="7.5" ry="5" fill="url(#gToe)"/>
+            <ellipse cx="123" cy="316" rx="6.5" ry="4.5" fill="url(#gToe)" transform="rotate(10 123 316)"/>
+            <ellipse cx="112" cy="321" rx="19" ry="5" fill="#6a1500" opacity=".18" filter="url(#fAO)"/>
+          </g>
+
+          <!-- BODY -->
+          <ellipse cx="212" cy="232" rx="70" ry="54" fill="#7a1a00" opacity=".18" filter="url(#fAO)" transform="translate(3,14)"/>
+          <ellipse cx="212" cy="228" rx="70" ry="54" fill="url(#gBody)"/>
+          <ellipse cx="210" cy="238" rx="46" ry="36" fill="url(#gBelly)" opacity=".82"/>
+          <ellipse cx="196" cy="206" rx="34" ry="24" fill="url(#gHL)" opacity=".38"/>
+          <circle cx="194" cy="197" r="13" fill="url(#gSpot)" opacity=".68"/>
+          <circle cx="194" cy="197" r="6.5" fill="rgba(255,255,255,.22)"/>
+          <circle cx="234" cy="202" r="9" fill="url(#gSpot)" opacity=".52"/>
+          <circle cx="234" cy="202" r="4.5" fill="rgba(255,255,255,.18)"/>
+
+          <!-- HUMP -->
+          <ellipse cx="178" cy="188" rx="30" ry="24" fill="url(#gBody)"/>
+          <ellipse cx="175" cy="192" rx="17" ry="14" fill="url(#gBelly)" opacity=".68"/>
+          <ellipse cx="173" cy="182" rx="15" ry="11" fill="url(#gHL)" opacity=".32"/>
+          <circle cx="171" cy="177" r="10" fill="url(#gSpot)" opacity=".58"/>
+          <circle cx="171" cy="177" r="5" fill="rgba(255,255,255,.2)"/>
+
+          <!-- FRONT LEG LEFT (behind) -->
+          <g opacity=".8">
+            <ellipse cx="174" cy="275" rx="14" ry="11" fill="url(#gLeg)" transform="rotate(-8 174 275)"/>
+            <ellipse cx="168" cy="296" rx="12" ry="9" fill="url(#gLeg)"/>
+            <ellipse cx="164" cy="311" rx="15" ry="8" fill="url(#gLeg)" transform="rotate(-5 164 311)"/>
+            <ellipse cx="155" cy="318" rx="7.5" ry="4.5" fill="url(#gToe)" transform="rotate(-8 155 318)"/>
+            <ellipse cx="165" cy="321" rx="7" ry="4.5" fill="url(#gToe)"/>
+            <ellipse cx="175" cy="318" rx="6" ry="4" fill="url(#gToe)" transform="rotate(8 175 318)"/>
+            <ellipse cx="164" cy="323" rx="17" ry="5" fill="#6a1500" opacity=".16" filter="url(#fAO)"/>
+          </g>
+
+          <!-- FRONT LEG RIGHT (front) -->
+          <ellipse cx="242" cy="273" rx="16" ry="13" fill="url(#gLeg)" transform="rotate(12 242 273)"/>
+          <ellipse cx="250" cy="295" rx="14" ry="11" fill="url(#gLeg)" transform="rotate(6 250 295)"/>
+          <ellipse cx="254" cy="310" rx="16" ry="9" fill="url(#gLeg)" transform="rotate(4 254 310)"/>
+          <ellipse cx="246" cy="318" rx="8" ry="5" fill="url(#gToe)" transform="rotate(-6 246 318)"/>
+          <ellipse cx="256" cy="321" rx="7.5" ry="5" fill="url(#gToe)"/>
+          <ellipse cx="265" cy="318" rx="6.5" ry="4.5" fill="url(#gToe)" transform="rotate(8 265 318)"/>
+          <ellipse cx="254" cy="323" rx="19" ry="5" fill="#6a1500" opacity=".17" filter="url(#fAO)"/>
+
+          <!-- NECK -->
+          <ellipse cx="268" cy="192" rx="22" ry="36" fill="url(#gBody)" transform="rotate(22 268 192)"/>
+          <ellipse cx="264" cy="195" rx="13" ry="23" fill="url(#gBelly)" opacity=".7" transform="rotate(22 264 195)"/>
+          <ellipse cx="260" cy="181" rx="11" ry="17" fill="url(#gHL)" opacity=".3" transform="rotate(22 260 181)"/>
+
+          <!-- NECK JOINT -->
+          <ellipse cx="257" cy="210" rx="19" ry="15" fill="#e06010"/>
+          <ellipse cx="257" cy="209" rx="12" ry="9" fill="url(#gBelly)" opacity=".78"/>
+          <ellipse cx="257" cy="210" rx="19" ry="15" fill="none" stroke="#a03000" stroke-width="1.5" opacity=".35"/>
+          <ellipse cx="257" cy="210" rx="14" ry="11" fill="none" stroke="#a03000" stroke-width="1" opacity=".22"/>
+
+          <!-- HEAD -->
+          <ellipse cx="310" cy="150" rx="52" ry="45" fill="#7a1a00" opacity=".2" filter="url(#fAO)" transform="translate(3,9)"/>
+          <ellipse cx="310" cy="146" rx="52" ry="45" fill="url(#gHead)"/>
+          <ellipse cx="293" cy="124" rx="30" ry="23" fill="url(#gHL)" opacity=".42"/>
+          <ellipse cx="300" cy="116" rx="32" ry="23" fill="url(#gBelly)" opacity=".52"/>
+          <!-- Head spots -->
+          <circle cx="288" cy="112" r="14" fill="url(#gSpot)" opacity=".62"/>
+          <circle cx="288" cy="112" r="7" fill="rgba(255,255,255,.22)"/>
+          <circle cx="313" cy="107" r="10" fill="url(#gSpot)" opacity=".48"/>
+          <circle cx="313" cy="107" r="5" fill="rgba(255,255,255,.18)"/>
+
+          <!-- EYE -->
+          <ellipse cx="305" cy="153" rx="29" ry="27" fill="#a02800" opacity=".22" filter="url(#fAO)" transform="translate(2,5)"/>
+          <ellipse cx="305" cy="149" rx="29" ry="27" fill="url(#gEyeW)"/>
+          <ellipse cx="294" cy="137" rx="11" ry="9" fill="rgba(255,255,255,.6)"/>
+          <circle cx="309" cy="153" r="18" fill="url(#gPupil)"/>
+          <circle cx="309" cy="153" r="18" fill="none" stroke="#2a1a70" stroke-width="2.5" opacity=".45"/>
+          <circle cx="311" cy="155" r="10" fill="#030315"/>
+          <circle cx="317" cy="145" r="6.5" fill="white" opacity=".92"/>
+          <circle cx="307" cy="159" r="2.5" fill="white" opacity=".5"/>
+          <circle cx="321" cy="152" r="2" fill="white" opacity=".38"/>
+          <ellipse cx="305" cy="149" rx="29" ry="27" fill="none" stroke="#c04000" stroke-width="1.5" opacity=".22"/>
+
+          <!-- SNOUT -->
+          <ellipse cx="348" cy="157" rx="26" ry="22" fill="url(#gSnout)"/>
+          <ellipse cx="338" cy="148" rx="13" ry="10" fill="rgba(255,220,160,.42)"/>
+          <ellipse cx="368" cy="162" rx="13" ry="12" fill="#ff8020"/>
+          <ellipse cx="362" cy="156" rx="7" ry="6" fill="rgba(255,200,120,.38)"/>
+          <circle cx="362" cy="168" r="3.5" fill="#a03000" opacity=".55"/>
+          <path d="M 341 170 Q 358 179 369 173" stroke="#b03800" stroke-width="2.2" fill="none" opacity=".45" stroke-linecap="round"/>
+
+          <!-- HEAD-NECK JOINT -->
+          <ellipse cx="273" cy="168" rx="15" ry="12" fill="#e06010"/>
+          <ellipse cx="273" cy="167" rx="9" ry="7" fill="url(#gBelly)" opacity=".72"/>
+          <ellipse cx="273" cy="168" rx="15" ry="12" fill="none" stroke="#a03000" stroke-width="1.2" opacity=".32"/>
+        </g>
+      </svg>
+
+      <div class="floating-pill pill1"><span class="pill-dot" style="background:var(--accent2)"></span>Articulado 100%</div>
+      <div class="floating-pill pill2"><span class="pill-dot" style="background:var(--accent3)"></span>🚚 Envío gratis +$40k</div>
+      <div class="floating-pill pill3"><span class="pill-dot" style="background:var(--accent)"></span>Hecho en Argentina 🇦🇷</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BENEFITS -->
-  <section class="benefits-section" id="beneficios">
-    <div class="inner">
-      <div class="section-label reveal">Por qué elegirnos</div>
-      <h2 class="reveal">¿Por qué elegir <em>PliVerse?</em></h2>
-      <div class="benefits-grid">
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">🧠</div>
-          <div class="benefit-title">Estimulan la creatividad</div>
-          <div class="benefit-desc">Cada diseño invita a inventar historias y crear mundos propios.</div>
-        </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">💪</div>
-          <div class="benefit-title">Resistentes y flexibles</div>
-          <div class="benefit-desc">Materiales duraderos que soportan el uso diario sin romperse.</div>
-        </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">🎁</div>
-          <div class="benefit-title">Perfectos para regalar</div>
-          <div class="benefit-desc">Originales, llamativos y diferentes a los juguetes tradicionales.</div>
-        </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">&#127462;&#127479;</div>
-          <div class="benefit-title">Producción local</div>
-          <div class="benefit-desc">Diseñados y fabricados con dedicación en Argentina.</div>
-        </div>
-      </div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Pago 100% seguro</strong>Protegido en cada compra</div></div>
+  <div class="trust-item"><div class="trust-icon">🚚</div><div><strong>Envío gratis</strong>En compras +$40.000</div></div>
+  <div class="trust-item"><div class="trust-icon">💬</div><div><strong>Atención personalizada</strong>Respondemos rápido</div></div>
+  <div class="trust-item"><div class="trust-icon">🌿</div><div><strong>Material PLA</strong>Seguro y duradero</div></div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="productos">
+  <div class="section-head">
+    <div>
+      <p class="section-label">Catálogo</p>
+      <h2 class="section-title">Nuestros últimos<br>lanzamientos</h2>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PRODUCTS -->
-  <section class="products-section" id="productos">
-    <div class="inner">
-      <div class="section-label reveal">Nuestra tienda</div>
-      <h2 class="reveal">Nuestros <em>favoritos</em></h2>
-      <div class="products-grid">
-        <div class="product-card reveal">
-          <div class="product-img product-img-bg1">🦕</div>
-          <div class="product-info">
-            <div class="product-name">Dinosaurio Articulado 3D</div>
-            <div class="product-desc">Flexible, resistente y lleno de detalle. ¡Mueve cada parte!</div>
-            <div class="product-price">$4.500</div>
-            <div class="product-actions">
-              <button class="btn-cart">🛒 Agregar al carrito</button>
-              <button class="btn-detail">Ver →</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img product-img-bg2">🐙</div>
-          <div class="product-info">
-            <div class="product-name">Pulpo Articulado 3D</div>
-            <div class="product-desc">Tentáculos que se mueven. Favorito de los chicos del mar.</div>
-            <div class="product-price">$4.200</div>
-            <div class="product-actions">
-              <button class="btn-cart">🛒 Agregar al carrito</button>
-              <button class="btn-detail">Ver →</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img product-img-bg3">🐉</div>
-          <div class="product-info">
-            <div class="product-name">Dragón Articulado 3D</div>
-            <div class="product-desc">Edición limitada. El más solicitado de la colección fantasía.</div>
-            <div class="product-price">$5.800</div>
-            <div class="product-actions">
-              <button class="btn-cart">🛒 Agregar al carrito</button>
-              <button class="btn-detail">Ver →</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACKS -->
-  <section id="packs">
-    <div class="inner">
-      <div class="section-label reveal">Más valor, más diversión</div>
-      <h2 class="reveal">Descubrí nuestros <em>packs especiales</em></h2>
-      <p class="reveal" style="margin-top:0.5rem;">Elegí combinaciones pensadas para regalar o coleccionar.</p>
-      <div class="packs-grid">
-        <div class="pack-card pack-card-1 reveal">
-          <div class="pack-emoji">🏕️</div>
-          <div class="pack-name">Pack Aventura</div>
-          <div class="pack-desc">3 juguetes articulados temáticos. Ideal para explorar.</div>
-          <div class="pack-price">$11.500</div>
-        </div>
-        <div class="pack-card pack-card-2 reveal">
-          <div class="pack-emoji">🌊</div>
-          <div class="pack-name">Pack Océano</div>
-          <div class="pack-desc">Pulpo, tiburón y tortuga articulados. ¡El mar en tus manos!</div>
-          <div class="pack-price">$12.000</div>
-        </div>
-        <div class="pack-card pack-card-3 reveal">
-          <div class="pack-emoji">🦕</div>
-          <div class="pack-name">Pack Dinosaurios</div>
-          <div class="pack-desc">3 dinos prehistóricos articulados. El favorito de los fans.</div>
-          <div class="pack-price">$13.500</div>
-        </div>
-      </div>
-      <div class="packs-cta reveal">
-        <a href="#" class="btn-primary">Ver todos los packs →</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- STORYTELLING -->
-  <section class="card-section">
-    <div class="inner">
-      <div class="story-wrap reveal">
-        <div class="section-label">Nuestra misión</div>
-        <h2>Más que juguetes,<br><em>herramientas para imaginar</em></h2>
-        <p>En PliVerse creemos que jugar es una forma de aprender. Cada pieza está diseñada para acompañar momentos únicos, estimular la creatividad y generar recuerdos inolvidables.</p>
-        <div class="story-quote">"No vendemos plástico.<br>Creamos experiencias."</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST -->
-  <section>
-    <div class="inner">
-      <div class="section-label reveal">Tu tranquilidad</div>
-      <h2 class="reveal">Comprá con <em>tranquilidad</em></h2>
-      <div class="trust-grid">
-        <div class="trust-item reveal">
-          <div class="trust-icon">🚚</div>
-          <div class="trust-label">Envíos a todo el país</div>
-          <div class="trust-sub">Rápidos y seguros</div>
-        </div>
-        <div class="trust-item reveal">
-          <div class="trust-icon">💬</div>
-          <div class="trust-label">Atención personalizada</div>
-          <div class="trust-sub">Siempre disponibles</div>
-        </div>
-        <div class="trust-item reveal">
-          <div class="trust-icon">🔒</div>
-          <div class="trust-label">Pago seguro</div>
-          <div class="trust-sub">Múltiples medios</div>
-        </div>
-        <div class="trust-item reveal">
-          <div class="trust-icon">✋</div>
-          <div class="trust-label">Producción artesanal</div>
-          <div class="trust-sub">Hecho con dedicación</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHOLESALE -->
-  <section class="card-section" id="mayoristas">
-    <div class="inner">
-      <div class="wholesale-wrap reveal">
-        <div class="section-label">Para negocios</div>
-        <h2>¿Tenés una juguetería <em>o negocio?</em></h2>
-        <p>Ofrecemos líneas exclusivas para comercios que buscan diferenciarse con productos innovadores.</p>
-        <ul class="wholesale-features">
-          <li>Packs mayoristas con precios especiales</li>
-          <li>Exhibidores de mostrador incluidos</li>
-          <li>Posibilidad de personalización de colores</li>
-          <li>Soporte comercial dedicado</li>
-        </ul>
-        <a href="#" class="btn-wholesale">Quiero vender PliVerse →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section>
-    <div class="inner">
-      <div class="section-label reveal">Opiniones reales</div>
-      <h2 class="reveal">Lo que dicen nuestros <em>clientes</em></h2>
-      <div class="testimonials-grid">
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"Mi hijo no para de jugar con el dinosaurio. La calidad es increíble para el precio, y llegó súper rápido."</div>
-          <div class="testi-author">
-            <div class="testi-avatar" style="background:#fff0eb;">👩</div>
-            <div>
-              <div class="testi-name">Valentina G.</div>
-              <div class="testi-role">Mamá de Mateo, 7 años</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"Lo compré para regalar en un cumpleaños y fue el presente más celebrado de la fiesta."</div>
-          <div class="testi-author">
-            <div class="testi-avatar" style="background:#e8fbfa;">👨</div>
-            <div>
-              <div class="testi-name">Lucas P.</div>
-              <div class="testi-role">Papá de dos nenas</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal" style="background:var(--soft); border: 2px dashed rgba(26,20,18,0.1);">
-          <div style="text-align:center; padding: 1rem 0;">
-            <div style="font-size:2rem; margin-bottom:0.5rem;">💬</div>
-            <div style="font-weight:700; font-size:0.9rem;">¡Tu reseña podría estar aquí!</div>
-            <div style="font-size:0.8rem; color:var(--muted); margin-top:0.25rem;">Comprá y contanos tu experiencia</div>
-          </div>
+    <a href="https://www.pliverse.com/productos/" class="btn-secondary">Ver todo →</a>
+  </div>
+  <div class="product-grid">
+    <div class="product-card featured reveal" onclick="window.location='https://www.pliverse.com/product/elefante-flexible-3d/'">
+      <div class="product-img" style="background:linear-gradient(135deg,#1e1e35,#2d2d50);">🐘</div>
+      <div class="product-body" style="display:flex;flex-direction:column;justify-content:center;padding:36px;">
+        <span class="product-tag">⭐ Más vendido</span>
+        <div class="product-name" style="font-size:1.4rem;margin-bottom:10px;">Elefante Flexible 3D</div>
+        <p style="color:var(--muted);font-size:.92rem;line-height:1.7;margin-bottom:26px;">Completamente articulado con movimiento real. Impreso en PLA sin bordes filosos, perfecto para todas las edades.</p>
+        <div class="product-footer">
+          <span class="product-price">$2.99</span>
+          <a href="https://www.pliverse.com/product/elefante-flexible-3d/" class="btn-primary" style="padding:12px 22px;">Ver producto →</a>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="card-section" style="padding-bottom: 2rem;">
-    <div class="inner">
-      <div class="final-cta-wrap reveal">
-        <div class="section-label">¿Listo?</div>
-        <h2>Dejá que la imaginación<br>haga el resto</h2>
-        <p>Miles de chicos ya están jugando, explorando y creando con PliVerse.</p>
-        <a href="#productos" class="btn-final">✦ Explorar colección</a>
+    <div class="product-card reveal" style="transition-delay:.1s" onclick="window.location='https://www.pliverse.com/product/canguro-flexible-3d/'">
+      <div class="product-img" style="background:linear-gradient(135deg,#1e2a1e,#2d402d);">🦘</div>
+      <div class="product-body">
+        <span class="product-tag">Articulado</span>
+        <div class="product-name">Canguro Flexible 3D</div>
+        <div class="product-footer"><span class="product-price">$2.99</span><button class="add-btn">+</button></div>
       </div>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="inner">
-      <div class="footer-logo">Pli<span>Verse</span></div>
-      <div class="footer-tagline">Juguetes 3D que despiertan la imaginación &#127462;&#127479;</div>
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-col-title">Tienda</div>
-          <a href="#">Ver colección</a>
-          <a href="#">Packs especiales</a>
-          <a href="#">Novedades</a>
-          <a href="#">Mayoristas</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Ayuda</div>
-          <a href="#">Cómo comprar</a>
-          <a href="#">Política de envíos</a>
-          <a href="#">Política de cambios</a>
-          <a href="#">Contacto</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Contacto</div>
-          <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85edeae9e4c5f5e9ecf3e0f7f6e0abe6eae8abe4f7">[email&#160;protected]</a></p>
-          <p>📱 Whatsapp disponible</p>
-          <p>📍 Argentina</p>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Redes</div>
-          <div class="social-links">
-            <div class="social-btn">📷</div>
-            <div class="social-btn">📘</div>
-            <div class="social-btn">🎵</div>
-          </div>
-          <a href="#" style="margin-top:0.75rem;">@pliverse.ar</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>© 2025 PliVerse — Todos los derechos reservados</div>
-        <div>Diseñado y fabricado en Argentina &#127462;&#127479;</div>
+    <div class="product-card reveal" style="transition-delay:.2s" onclick="window.location='https://www.pliverse.com/product/cerdito-flexible-3d/'">
+      <div class="product-img" style="background:linear-gradient(135deg,#2a1e2a,#40303d);">🐷</div>
+      <div class="product-body">
+        <span class="product-tag">Articulado</span>
+        <div class="product-name">Cerdito Flexible 3D</div>
+        <div class="product-footer"><span class="product-price">$2.99</span><button class="add-btn">+</button></div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<!-- PACKS BANNER -->
+<div class="packs-banner" id="packs">
+  <div style="position:relative;z-index:1">
+    <div class="packs-badge">🎁 Oferta especial</div>
+    <h2 class="section-title">Packs PliVerse<br>para regalar</h2>
+    <p class="packs-desc">Armamos packs sorprendentes con varias figuras. El regalo más original para cumpleaños, el Día del Niño, o simplemente porque sí. <strong>¡Con envío gratis!</strong></p>
+    <a href="https://www.pliverse.com/product-category/packs-pliverse/" class="btn-primary">🎁 Ver todos los packs <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+  <div class="pack-grid">
+    <div class="pack-card">🎁</div><div class="pack-card">🐷</div>
+    <div class="pack-card">🦘</div><div class="pack-card">🐘</div>
+  </div>
+</div>
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-      });
+<!-- HOW IT WORKS -->
+<section class="how-section" id="nosotros">
+  <div style="text-align:center;max-width:560px;margin:0 auto 8px;">
+    <p class="section-label">¿Cómo funciona?</p>
+    <h2 class="section-title">Del diseño a tu puerta<br>en simples pasos</h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="step-num">01</div><div class="step-icon">🎨</div><div class="step-title">Diseñamos</div><div class="step-desc">Cada figura es diseñada digitalmente para garantizar el mejor movimiento y detalle.</div></div>
+    <div class="step reveal" style="transition-delay:.1s"><div class="step-num">02</div><div class="step-icon">🖨️</div><div class="step-title">Imprimimos</div><div class="step-desc">Usamos impresoras 3D de precisión con PLA de alta calidad, sin bordes peligrosos.</div></div>
+    <div class="step reveal" style="transition-delay:.2s"><div class="step-num">03</div><div class="step-icon">📦</div><div class="step-title">Empaquetamos</div><div class="step-desc">Cada pedido se prepara con cuidado para que llegue perfecto a tu domicilio.</div></div>
+    <div class="step reveal" style="transition-delay:.3s"><div class="step-num">04</div><div class="step-icon">🚀</div><div class="step-title">Enviamos</div><div class="step-desc">Envío a todo el país. Gratis en compras superiores a $40.000.</div></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div style="text-align:center;max-width:560px;margin:0 auto 8px;">
+    <p class="section-label">Reseñas</p>
+    <h2 class="section-title">Lo que dicen<br>nuestros clientes</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"¡Le encantó a mi nena! El elefante es re flexible y tiene muchos movimientos. Llegó super bien empaquetado."</p>
+      <div class="reviewer"><div class="reviewer-avatar">ML</div><div><div class="reviewer-name">María L.</div><div class="reviewer-loc">Rosario, Santa Fe</div></div></div>
+    </div>
+    <div class="review-card reveal" style="transition-delay:.1s">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Compré el pack para el cumple de mi sobrino y fue el regalo más original. Llegó rápido y en perfecto estado."</p>
+      <div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,var(--accent2),#0099aa)">JP</div><div><div class="reviewer-name">Juan P.</div><div class="reviewer-loc">Buenos Aires</div></div></div>
+    </div>
+    <div class="review-card reveal" style="transition-delay:.2s">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Súper originales, la calidad es muy buena. Me sorprendió lo bien articulado que está el canguro. Compré más."</p>
+      <div class="reviewer"><div class="reviewer-avatar" style="background:linear-gradient(135deg,var(--accent3),#cc9900)">SG</div><div><div class="reviewer-name">Sol G.</div><div class="reviewer-loc">Córdoba</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-section">
+  <p class="section-label" style="text-align:center">Comunidad</p>
+  <h2 class="section-title">Suscribite y<br>no te pierdas nada</h2>
+  <p class="section-sub" style="margin:10px auto 0">Novedades, lanzamientos y promos antes que nadie.</p>
+  <div class="newsletter-form">
+    <input type="email" class="newsletter-input" placeholder="tu@email.com"/>
+    <button class="newsletter-btn">Suscribirme →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">Pli<span>Verse</span></a>
+      <p>Tu universo de juguetes flexibles impresos en 3D. Hechos con pasión en Rafaela, Argentina. 🇦🇷</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tienda</h4>
+      <ul>
+        <li><a href="https://www.pliverse.com/productos/">Productos</a></li>
+        <li><a href="https://www.pliverse.com/product-category/packs-pliverse/">Packs</a></li>
+        <li><a href="https://www.pliverse.com/carrito/">Carrito</a></li>
+        <li><a href="https://www.pliverse.com/mi-cuenta/">Mi cuenta</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <ul>
+        <li><a href="https://www.pliverse.com/preguntas-frecuentes/">Preguntas frecuentes</a></li>
+        <li><a href="https://www.pliverse.com/refund_returns/">Devoluciones</a></li>
+        <li><a href="https://www.pliverse.com/terminos-y-condiciones/">Términos</a></li>
+        <li><a href="https://www.pliverse.com/privacy-policy/">Privacidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <div class="footer-contact">
+        📱 <a href="tel:+5493492270958">(+54) 3492 270958</a><br>
+        ✉️ <a href="mailto:consultas@pliverse.com">consultas@pliverse.com</a><br>
+        📍 Rafaela, Santa Fe, 2300
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 PliVerse — Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="https://www.pliverse.com/privacy-policy/">Privacidad</a>
+      <a href="https://www.pliverse.com/terminos-y-condiciones/">Términos</a>
+      <a href="https://www.pliverse.com/refund_returns/">Devoluciones</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelector('.newsletter-btn').addEventListener('click', () => {
+    const input = document.querySelector('.newsletter-input');
+    if(input.value && input.value.includes('@')) {
+      input.value = '✓ ¡Gracias por suscribirte!';
+      input.style.color = 'var(--accent2)';
+      input.disabled = true;
+    }
+  });
+
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      btn.textContent = '✓';
+      btn.style.background = 'var(--accent2)';
+      setTimeout(() => { btn.textContent = '+'; btn.style.background = 'var(--accent)'; }, 1500);
     });
-
-    document.querySelectorAll('.btn-cart').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const orig = this.textCon
+  });
+</script>
+</body>
+</html>
